@@ -1,13 +1,15 @@
-# User Registration Endpoint
+# User Endpoints Documentation
 
-## Endpoint: `/users/register`
+## User Registration Endpoint
 
-### Method: POST
+### Endpoint: `/users/register`
 
-### Description:
+#### Method: POST
+
+#### Description:
 This endpoint is used to register a new user. It validates the input data, hashes the user's password, and stores the user information in the database. Upon successful registration, it returns a JSON Web Token (JWT) and the user details.
 
-### Request Body:
+#### Request Body:
 The request body must be a JSON object containing the following fields:
 
 - `fullname`: An object containing:
@@ -26,6 +28,36 @@ Example:
   "email": "john.doe@example.com",
   "password": "password123"
 }
+
+
+
+
+## User Login Endpoint
+
+### Endpoint: `/users/login`
+
+#### Method: POST
+
+#### Description:
+This endpoint is used to authenticate a user. It validates the input data, checks the user's credentials, and returns a JSON Web Token (JWT) and the user details upon successful authentication.
+
+#### Request Body:
+The request body must be a JSON object containing the following fields:
+
+- `email`: A string representing the user's email address (required, must be a valid email).
+- `password`: A string with a minimum length of 6 characters (required).
+
+Example:
+```json
+{
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+
+
+
+### Example Response:
+```json
 {
   "token": "JWT_TOKEN",
   "user": {
@@ -37,3 +69,4 @@ Example:
     "email": "john.doe@example.com"
   }
 }
+```
