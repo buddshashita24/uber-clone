@@ -120,3 +120,45 @@ This endpoint logs out the current user by invalidating their JWT token. Require
   {
     "message": "Logged out successfully"
   }
+
+# Captain Endpoints Documentation
+
+## Captain Registration Endpoint
+
+### Endpoint: `/captain/register`
+
+#### Method: POST
+
+#### Description:
+This endpoint registers a new captain with their vehicle details. It validates the input data and stores the captain information in the database.
+
+#### Request Body:
+The request body must be a JSON object containing:
+
+- `fullname`: An object containing:
+  - `firstname`: String, minimum 3 characters (required)
+  - `lastname`: String (optional)
+- `email`: String, valid email format (required)
+- `password`: String, minimum 6 characters (required)
+- `vehicle`: An object containing:
+  - `color`: String, minimum 3 characters (required)
+  - `plate`: String, minimum 3 characters (required)
+  - `capacity`: Integer, minimum 1 (required)
+  - `vehicleType`: String, must be one of: 'car', 'bike', 'auto' (required)
+
+#### Example Request:
+```json
+{
+  "fullname": {
+    "firstname": "John",
+    "lastname": "Doe"
+  },
+  "email": "john.captain@example.com",
+  "password": "password123",
+  "vehicle": {
+    "color": "Black",
+    "plate": "ABC123",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
