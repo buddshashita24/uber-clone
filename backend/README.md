@@ -28,9 +28,7 @@ Example:
   "email": "john.doe@example.com",
   "password": "password123"
 }
-
-
-
+```
 
 ## User Login Endpoint
 
@@ -53,8 +51,7 @@ Example:
   "email": "john.doe@example.com",
   "password": "password123"
 }
-
-
+```
 
 ### Example Response:
 ```json
@@ -70,3 +67,56 @@ Example:
   }
 }
 ```
+
+## User Profile Endpoint
+
+### Endpoint: `/users/profile`
+
+#### Method: GET
+
+#### Description:
+This endpoint retrieves the authenticated user's profile information. Requires a valid JWT token in the Authorization header.
+
+#### Headers:
+- `Authorization`: Bearer JWT_TOKEN (required)
+
+#### Responses:
+
+##### Success (200 OK):
+- **Description**: User profile retrieved successfully.
+- **Body**:
+  ```json
+  {
+    "_id": "USER_ID",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com"
+  }
+  ```
+
+
+
+## User Logout Endpoint
+
+### Endpoint: `/users/logout`
+
+#### Method: GET
+
+#### Description:
+This endpoint logs out the current user by invalidating their JWT token. Requires authentication.
+
+#### Authentication:
+- Requires valid JWT token in Authorization header
+- Format: `Bearer <token>`
+
+#### Responses:
+
+##### Success (200 OK):
+- **Description**: User logged out successfully
+- **Body**:
+  ```json
+  {
+    "message": "Logged out successfully"
+  }
